@@ -28,12 +28,13 @@ public class Customer {
     private Long id;
 
     //Will automatically assign dateTime when registered
+    @Column(updatable = false)
     private LocalDateTime registered;
 
     @NotBlank
     @Email
-    @Unique
     @Size(max = 255)
+    @Column(unique = true)
     private String emailAddress;
 
     @NotBlank
@@ -77,10 +78,6 @@ public class Customer {
 
     public LocalDateTime getRegistered() {
         return registered;
-    }
-
-    public void setRegistered(LocalDateTime registered) {
-        this.registered = registered;
     }
 
     public String getEmailAddress() {
@@ -154,4 +151,11 @@ public class Customer {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+    //For initialising registered
+    @PrePersist
+    protected void onCreate() {
+        this.registered = LocalDateTime.now();
+    }
+
 }
