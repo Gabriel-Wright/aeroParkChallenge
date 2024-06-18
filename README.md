@@ -10,7 +10,7 @@ This Spring Boot application demonstrates a customer registration form and succe
 git clone https://github.com/Gabriel-Wright/aeroParkChallenge.git
 ```
 
-2. Within src/main/resources/application.properties
+2. Update src/main/resources/application.properties with appropriate MYSQL connection information
 
   ```
   #My SQL Server Info
