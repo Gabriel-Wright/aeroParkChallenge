@@ -3,6 +3,7 @@ package com.aeroPark.ApplicationCodingChallenge.views;
 import com.aeroPark.ApplicationCodingChallenge.data.Customer;
 import com.aeroPark.ApplicationCodingChallenge.service.CustomerService;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.notification.Notification;
@@ -13,6 +14,9 @@ import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Arrays;
+import java.util.List;
+
 
 @Route("registration")
 @CssImport("./styles/styles.css")
@@ -20,7 +24,7 @@ public class RegistrationView extends FormLayout {
 
     TextField firstName = new TextField("First Name");
     TextField lastName = new TextField("Last Name");
-    TextField title = new TextField("Title");
+    ComboBox<String> title = new ComboBox<>("Title");
     TextField emailAddress = new TextField("Email");
     TextField addressLine1 = new TextField("Address Line 1");
     TextField addressLine2 = new TextField("Address Line 2");
@@ -35,11 +39,19 @@ public class RegistrationView extends FormLayout {
 
     private final CustomerService customerService;
 
+    // Predefined list of titles
+    private final List<String> titleOptions = Arrays.asList("Mr.", "Mrs.", "Miss", "Ms.", "Dr.");
+
     @Autowired
     public RegistrationView(CustomerService customerService) {
         this.customerService = customerService;
         addClassName("registration-form");
         binder.bindInstanceFields(this);
+
+        //Setting up title combobox
+        title.setItems(titleOptions);
+        title.setPlaceholder("Select title");
+        title.setAllowCustomValue(true); //users can type in their own title
 
         add(firstName,
                 lastName,
