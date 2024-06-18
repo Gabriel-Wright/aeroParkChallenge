@@ -49,6 +49,8 @@ public class CustomerRepositoryTests {
         // Assert that saving customer2 throws DataIntegrityViolationException
         assertThrows(DataIntegrityViolationException.class, () -> customerRepository.save(customer2),
                 "Expected DataIntegrityViolationException due to unique constraint violation");
+
+        customerRepository.delete(customer);
     }
 
     @Test
@@ -78,6 +80,7 @@ public class CustomerRepositoryTests {
         assertTrue(registeredTime.isAfter(now.minusSeconds(1)),"Registered timestamp should be close" +
                 "to current time");
 
+        customerRepository.delete(customer);
     }
 }
 
