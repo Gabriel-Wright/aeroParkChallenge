@@ -5,23 +5,20 @@
 }
 
 .registration-form {
-    width: 80%;
     margin:auto;
-    padding: 20px;
-}
-
-.success-view {
-    width: 80%;
-    margin: auto;
     padding: 20px;
 }
 
 .customer-grid {
-    width: 90%;
+    width: 80%;
     margin: auto;
     padding: 20px;
 }
 
+.filter-text {
+    width:130px;
+}
 .toolbar {
     margin:auto;
 }
+

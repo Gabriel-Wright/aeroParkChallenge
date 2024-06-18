@@ -8,6 +8,8 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.orderedlayout.FlexComponent;
+import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -50,6 +52,7 @@ public class SuccessView extends VerticalLayout {
 
     private Component getToolBar() {
         Button registrationButton = new Button("Return to registration", e -> navigateToRegistration());
+        registrationButton.addClassName("return-button");
 
         HorizontalLayout toolBar = new HorizontalLayout();
         toolBar.add(registrationButton, filterText);
@@ -58,6 +61,7 @@ public class SuccessView extends VerticalLayout {
     }
 
     private void configureFilterText() {
+        filterText.addClassName("filter-text");
         filterText.setPlaceholder("Filter by text...");
         //ValueChangeMode affects calls to DB for loading entries within grid
         filterText.setValueChangeMode(ValueChangeMode.LAZY);
