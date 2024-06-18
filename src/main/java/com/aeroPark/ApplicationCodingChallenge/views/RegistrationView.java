@@ -19,7 +19,6 @@ import java.util.List;
 
 
 @Route("registration")
-@CssImport("./styles/styles.css")
 public class RegistrationView extends FormLayout {
 
     TextField firstName = new TextField("First Name");
@@ -103,7 +102,7 @@ public class RegistrationView extends FormLayout {
 
     private void saveCustomer(Customer customer) {
         customerService.saveCustomer(customer);
-        Notification.show("Customer saved successfully", 3000, Notification.Position.MIDDLE);
+        Notification.show("Customer saved successfully", 1000, Notification.Position.MIDDLE);
     }
 
     private void routeToSuccessPage() {

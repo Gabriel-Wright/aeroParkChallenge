@@ -1,5 +1,11 @@
 /*Should set the textfields to red when they are invalid*/
 .registration-form .vaadin-text-field[invalid] {
-    border:1px solid red;
+    border:1px solid green;
     background-color:#eb4646;
+}
+
+.registration-form {
+    width: 80%;
+    margin:auto;
+    padding: 20px;
 }
