@@ -1,15 +1,10 @@
 package com.aeroPark.ApplicationCodingChallenge;
 
 import com.aeroPark.ApplicationCodingChallenge.data.Customer;
-import com.aeroPark.ApplicationCodingChallenge.data.CustomerRepository;
 import com.aeroPark.ApplicationCodingChallenge.service.CustomerService;
-import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
