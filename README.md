@@ -38,7 +38,7 @@ git clone https://github.com/Gabriel-Wright/aeroParkChallenge.git
 Using DataJPA, this project is setup to create and drop the table upon running of the software. This would not be appropriate in
 a production environment, but for the sake of this coding challenge I thought it was appropriate. 
 
-This setting can be toggled here:
+This setting can be toggled in src/main/resources/application.properties here:
 ```
 spring.jpa.hibernate.ddl-auto=create-drop
 ```
