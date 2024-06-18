@@ -5,15 +5,19 @@ import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
+import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
 import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.router.Route;
 
 
 @Route("registration")
+@CssImport("./styles/styles.css")
 public class RegistrationView extends FormLayout {
 
     TextField firstName = new TextField("First Name");
@@ -49,10 +53,16 @@ public class RegistrationView extends FormLayout {
         validateAndSave.addClickListener(event -> validateAndRegister());
     }
 
+    //This will attempt to bind the entries within the text fields to a customer bean
+    //If the entries cannot be bound to a customer object - an error message will appear
+    //and the incorrect text fields will be highlighted with messages explaining the issue
     private void validateAndRegister() {
-    }
-
-    private void loadForm() {
-
+        Customer customer = new Customer();
+        try {
+            binder.writeBean(customer);
+            Notification.show("Customer saved successfully", 3000, Notification.Position.MIDDLE);
+        } catch (ValidationException e) {
+            Notification.show("Some fields were entered incorrectly", 3000, Notification.Position.MIDDLE);
+        }
     }
 }
