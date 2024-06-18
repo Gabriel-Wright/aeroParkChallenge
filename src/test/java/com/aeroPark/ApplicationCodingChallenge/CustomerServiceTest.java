@@ -9,8 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -52,10 +53,29 @@ public class CustomerServiceTest {
         assertFalse(isUniqueDifferentCase);
     }
 
+    @Test
+    public void testFindByFilterText() {
+        String filterText = "test";
+        List<Customer> customersThatFitFilteredText = customerService.findAllCustomers(filterText);
+        assertEquals(1, customersThatFitFilteredText.size(),"Only one customer that suits the filter");
+
+        Long expectedCustomerId = customer.getId();
+        Long actualCustomerId = customersThatFitFilteredText.get(0).getId();
+
+        assertEquals(expectedCustomerId, actualCustomerId, "Same customer found");
+
+        String filterTextNoMatch = "££££££";
+        List<Customer> customersThatFitNoMatchText = customerService.findAllCustomers(filterTextNoMatch);
+        assertEquals(0, customersThatFitNoMatchText.size(), "No customers match");
+
+    }
+
     @AfterAll
     public static void cleanUp(@Autowired CustomerService customerService) {
         // Delete the test customer from the database
         customerService.removeCustomer(customer);
     }
+
+
 
 }
