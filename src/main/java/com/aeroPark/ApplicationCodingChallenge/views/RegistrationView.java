@@ -38,7 +38,7 @@ public class RegistrationView extends FormLayout {
     private final CustomerService customerService;
 
     // Predefined list of titles
-    private final List<String> titleOptions = Arrays.asList("Mr.", "Mrs.", "Miss", "Ms.", "Dr.");
+    private final List<String> titleOptions = Arrays.asList("Mr.", "Mrs.", "Miss", "Ms.", "Dr.", "Mx.");
 
     @Autowired
     public RegistrationView(CustomerService customerService) {
