@@ -21,7 +21,7 @@ git clone https://github.com/Gabriel-Wright/aeroParkChallenge.git
   spring.jpa.database = mysql
   ```
 
-3. Build the project for production
+3. Navigate into the root directory of the cloned project and then build the project for production
 
   ```
   mvn clean
